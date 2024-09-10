@@ -8,16 +8,6 @@
     android:padding="20dp">
 
     <ImageView
-        android:id="@+id/ivShow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/ivChange"
-        app:layout_constraintEnd_toStartOf="@id/ivChange"
-        android:src="@drawable/ic_visible"
-        android:layout_marginEnd="10dp"
-        android:contentDescription="@string/show"/>
-
-    <ImageView
         android:id="@+id/ivChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,6 +22,7 @@
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/ivChange"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
