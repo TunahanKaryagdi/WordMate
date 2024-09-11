@@ -7,8 +7,10 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
 import com.tunahankaryagdi.wordmate.R
 import com.tunahankaryagdi.wordmate.databinding.FragmentDetailDialogBinding
-import com.tunahankaryagdi.wordmate.databinding.FragmentLearnedBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class DetailDialogFragment : DialogFragment() {
 
     private var _binding: FragmentDetailDialogBinding? = null

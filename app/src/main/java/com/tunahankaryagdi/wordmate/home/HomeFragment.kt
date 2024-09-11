@@ -12,8 +12,9 @@ import com.tunahankaryagdi.wordmate.R
 import com.tunahankaryagdi.wordmate.databinding.FragmentHomeBinding
 import com.tunahankaryagdi.wordmate.databinding.FragmentLearnedBinding
 import com.tunahankaryagdi.wordmate.home.adapter.HomeWordsAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private val viewModel by viewModels<HomeViewModel>()

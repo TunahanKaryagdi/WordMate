@@ -9,8 +9,10 @@ import androidx.fragment.app.viewModels
 import com.tunahankaryagdi.wordmate.R
 import com.tunahankaryagdi.wordmate.databinding.FragmentHomeBinding
 import com.tunahankaryagdi.wordmate.databinding.FragmentLearnedBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class LearnedFragment : Fragment() {
 
     private val viewModel by viewModels<LearnedViewModel>()
