@@ -5,4 +5,7 @@
     <string name="learned">Learned</string>
     <string name="show">Show</string>
     <string name="change">Change</string>
+    <string name="cancel">Cancel</string>
+    <string name="arrow">Arrow</string>
+    <string name="unlearned">Unlearned</string>
 </resources>

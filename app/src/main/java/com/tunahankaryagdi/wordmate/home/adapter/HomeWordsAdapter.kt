@@ -5,7 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tunahankaryagdi.wordmate.databinding.ItemWordListBinding
 
-class HomeWordsAdapter : RecyclerView.Adapter<HomeWordsViewHolder>() {
+class HomeWordsAdapter(
+    val onClickItem: (String) -> Unit
+) : RecyclerView.Adapter<HomeWordsViewHolder>() {
 
     private var words = listOf("GO", "CAN", "COME")
 
@@ -16,7 +18,7 @@ class HomeWordsAdapter : RecyclerView.Adapter<HomeWordsViewHolder>() {
 
     override fun onBindViewHolder(holder: HomeWordsViewHolder, position: Int) {
         val word = words[position]
-        holder.bind(word)
+        holder.bind(word, onClickItem)
     }
 
     override fun getItemCount(): Int = words.size

@@ -13,10 +13,28 @@
         <action
             android:id="@+id/action_homeFragment_to_learnedFragment"
             app:destination="@id/learnedFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailDialogFragment"
+            app:destination="@id/detailDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/learnedFragment"
         android:name="com.tunahankaryagdi.wordmate.learned.LearnedFragment"
         android:label="fragment_learned"
-        tools:layout="@layout/fragment_learned" />
+        tools:layout="@layout/fragment_learned" >
+        <action
+            android:id="@+id/action_learnedFragment_to_detailDialogFragment"
+            app:destination="@id/detailDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/detailDialogFragment"
+        android:name="com.tunahankaryagdi.wordmate.detail.DetailDialogFragment"
+        android:label="DetailDialogFragment" >
+        <argument
+            android:name="word"
+            app:argType="string" />
+        <argument
+            android:name="primary"
+            app:argType="boolean" />
+    </dialog>
 </navigation>
