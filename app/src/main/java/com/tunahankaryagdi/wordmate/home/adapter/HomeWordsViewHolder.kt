@@ -26,8 +26,5 @@ class HomeWordsViewHolder(private val binding: ItemWordListBinding) :
                 onClickItem(word)
             }
         }
-
-
-
     }
 }
