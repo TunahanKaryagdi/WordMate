@@ -1,19 +1,18 @@
 package com.tunahankaryagdi.wordmate.learned
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.tunahankaryagdi.wordmate.R
-import com.tunahankaryagdi.wordmate.databinding.FragmentHomeBinding
+import com.tunahankaryagdi.wordmate.data.Word
 import com.tunahankaryagdi.wordmate.databinding.FragmentLearnedBinding
-import com.tunahankaryagdi.wordmate.home.HomeFragmentDirections
-import com.tunahankaryagdi.wordmate.home.adapter.HomeWordsAdapter
 import com.tunahankaryagdi.wordmate.learned.adapter.LearnedWordsAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -39,6 +38,7 @@ class LearnedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         learnedWordsAdapter = LearnedWordsAdapter(onClickItem = ::onClickItem)
         binding.rvLearnedWordList.adapter = learnedWordsAdapter
+        observeUiState()
     }
 
     override fun onDestroyView() {
@@ -46,8 +46,29 @@ class LearnedFragment : Fragment() {
         _binding = null
     }
 
-    private fun onClickItem(word:String){
-        findNavController().navigate(LearnedFragmentDirections.actionLearnedFragmentToDetailDialogFragment(word,false))
+    private fun onClickItem(word: Word) {
+        findNavController().navigate(
+            LearnedFragmentDirections.actionLearnedFragmentToDetailDialogFragment(
+                word,
+                false
+            )
+        )
+    }
+
+    private fun observeUiState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.uiState.collect { state ->
+                if (state.learnedWords.isEmpty()){
+                    binding.rvLearnedWordList.visibility = View.INVISIBLE
+                    binding.tvEmptyContent.visibility = View.VISIBLE
+                }
+                else{
+                    binding.rvLearnedWordList.visibility = View.VISIBLE
+                    binding.tvEmptyContent.visibility = View.INVISIBLE
+                }
+                learnedWordsAdapter.setData(state.learnedWords)
+            }
+        }
     }
 
 }

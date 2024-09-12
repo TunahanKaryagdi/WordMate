@@ -14,7 +14,9 @@
         android:layout_height="wrap_content"
         android:text="@string/learned_words"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="25sp"
+        android:textStyle="italic"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLearnedWordList"
@@ -24,6 +26,16 @@
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <TextView
+        android:id="@+id/tvEmptyContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_words_learned_yet"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

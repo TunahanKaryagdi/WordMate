@@ -32,7 +32,7 @@
         android:label="DetailDialogFragment" >
         <argument
             android:name="word"
-            app:argType="string" />
+            app:argType="com.tunahankaryagdi.wordmate.data.Word" />
         <argument
             android:name="primary"
             app:argType="boolean" />
