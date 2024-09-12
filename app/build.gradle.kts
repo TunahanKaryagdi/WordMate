@@ -64,6 +64,10 @@ dependencies {
     //Gson
     implementation (libs.gson)
 
+    //Swipe refresh layout
+    implementation(libs.androidx.swiperefreshlayout)
+
+
 }
 
 kapt {

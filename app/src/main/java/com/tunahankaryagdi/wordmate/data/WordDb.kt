@@ -1,0 +1,58 @@
+package com.tunahankaryagdi.wordmate.data
+
+
+fun getAllWords(): List<Word> {
+    val wordList = listOf(
+        Word("elma", "apple"),
+        Word("kitap", "book"),
+        Word("masa", "table"),
+        Word("kalem", "pencil"),
+        Word("çanta", "bag"),
+        Word("kapı", "door"),
+        Word("bilgisayar", "computer"),
+        Word("telefon", "phone"),
+        Word("araba", "car"),
+        Word("ev", "house"),
+        Word("gözlük", "glasses"),
+        Word("ayakkabı", "shoe"),
+        Word("çiçek", "flower"),
+        Word("uçak", "plane"),
+        Word("deniz", "sea"),
+        Word("şehir", "city"),
+        Word("yol", "road"),
+        Word("kedi", "cat"),
+        Word("köpek", "dog"),
+        Word("balık", "fish"),
+        Word("kuş", "bird"),
+        Word("zaman", "time"),
+        Word("para", "money"),
+        Word("su", "water"),
+        Word("çay", "tea"),
+        Word("kahve", "coffee"),
+        Word("süt", "milk"),
+        Word("ekmek", "bread"),
+        Word("yemek", "food"),
+        Word("hava", "weather"),
+        Word("güneş", "sun"),
+        Word("yağmur", "rain"),
+        Word("kar", "snow"),
+        Word("rüzgar", "wind"),
+        Word("kış", "winter"),
+        Word("bahar", "spring"),
+        Word("yaz", "summer"),
+        Word("sonbahar", "autumn"),
+        Word("ışık", "light"),
+        Word("karanlık", "dark"),
+        Word("renk", "color"),
+        Word("kırmızı", "red"),
+        Word("mavi", "blue"),
+        Word("yeşil", "green"),
+        Word("sarı", "yellow"),
+        Word("siyah", "black"),
+        Word("beyaz", "white"),
+        Word("mor", "purple"),
+        Word("turuncu", "orange")
+    )
+    return wordList
+}
+

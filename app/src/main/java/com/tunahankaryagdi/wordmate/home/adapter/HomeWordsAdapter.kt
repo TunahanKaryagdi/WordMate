@@ -10,10 +10,11 @@ class HomeWordsAdapter(
     val onClickItem: (Word) -> Unit
 ) : RecyclerView.Adapter<HomeWordsViewHolder>() {
 
-    private var words = listOf(Word("Go","Gitmek"), Word("Come", "Gelmek"))
+    private var words: List<Word> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeWordsViewHolder {
-        val binding = ItemWordListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemWordListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HomeWordsViewHolder(binding)
     }
 
@@ -24,7 +25,10 @@ class HomeWordsAdapter(
 
     override fun getItemCount(): Int = words.size
 
-
+    fun setData(newData: List<Word>) {
+        words = newData
+        notifyDataSetChanged()
+    }
 
 
 }

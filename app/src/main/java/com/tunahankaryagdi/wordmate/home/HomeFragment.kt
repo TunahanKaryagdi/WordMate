@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.tunahankaryagdi.wordmate.data.Word
 import com.tunahankaryagdi.wordmate.databinding.FragmentHomeBinding
 import com.tunahankaryagdi.wordmate.home.adapter.HomeWordsAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -34,7 +36,12 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeWordsAdapter = HomeWordsAdapter(onClickItem = ::onClickItem)
         binding.rvWordList.adapter = homeWordsAdapter
-
+        viewModel.getUnlearnedWords()
+        observeUiState()
+        binding.srlRefreshLayout.setOnRefreshListener {
+            viewModel.shuffleWords()
+            binding.srlRefreshLayout.isRefreshing = false
+        }
     }
 
 
@@ -50,6 +57,14 @@ class HomeFragment : Fragment() {
                 true
             )
         )
+    }
+
+    private fun observeUiState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.uiState.collect { state ->
+                homeWordsAdapter.setData(state.wordList)
+            }
+        }
     }
 
 }

@@ -38,6 +38,7 @@ class DetailDialogFragment : DialogFragment() {
             }
             tvLearned.setOnClickListener {
                 if (args.primary) viewModel.saveWord(args.word) else viewModel.removeWord(args.word)
+                dialog?.dismiss()
             }
             tvTitle.text = args.word.turkish
             tvDescription.text = args.word.english

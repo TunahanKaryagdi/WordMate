@@ -17,11 +17,8 @@ class LearnedViewModel @Inject constructor(
     private val _uiState: MutableStateFlow<LearnedUiState> = MutableStateFlow(LearnedUiState())
     val uiState: StateFlow<LearnedUiState> get() = _uiState
 
-    init {
-        getLearnedWords()
-    }
 
-    private fun getLearnedWords() {
+    fun getLearnedWords() {
         val words = wordRepository.getWords()
         _uiState.update {
             it.copy(learnedWords = words)
