@@ -41,7 +41,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeWordsAdapter = HomeWordsAdapter(onClickItem = ::onClickItem)
         binding.rvWordList.adapter = homeWordsAdapter
-        viewModel.getUnlearnedWords()
         observeUiState()
         binding.srlRefreshLayout.setOnRefreshListener {
             viewModel.shuffleWords()
@@ -67,7 +66,7 @@ class HomeFragment : Fragment() {
     private fun observeUiState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collect { state ->
-                homeWordsAdapter.setData(state.learnedWords)
+                homeWordsAdapter.setData(state.unlearnedWords)
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {

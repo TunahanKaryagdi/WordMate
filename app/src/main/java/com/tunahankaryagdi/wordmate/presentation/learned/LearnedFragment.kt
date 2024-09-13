@@ -43,7 +43,6 @@ class LearnedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         learnedWordsAdapter = LearnedWordsAdapter(onClickItem = ::onClickItem)
         binding.rvLearnedWordList.adapter = learnedWordsAdapter
-        viewModel.getLearnedWords()
         observeUiState()
 
     }

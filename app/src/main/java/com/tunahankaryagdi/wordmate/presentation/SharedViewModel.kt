@@ -18,21 +18,25 @@ class SharedViewModel @Inject constructor(
     private val _uiState: MutableStateFlow<UiState> = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> get() = _uiState
 
+    init {
+        getUnlearnedWords()
+        getLearnedWords()
+    }
 
     fun getUnlearnedWords() {
         val learnedWords = wordRepository.getWords()
-        val filteredWords = getAllWords().filter { word ->
+        val filteredWords = _uiState.value.unlearnedWords.filter { word ->
             !learnedWords.contains(word)
         }
-        _uiState.update { it->
-            it.copy(learnedWords = filteredWords)
+        _uiState.update { it ->
+            it.copy(unlearnedWords = filteredWords)
         }
     }
 
-    fun shuffleWords(){
-        val words = _uiState.value.learnedWords
+    fun shuffleWords() {
+        val words = _uiState.value.unlearnedWords
         _uiState.update {
-            it.copy(learnedWords = words.shuffled())
+            it.copy(unlearnedWords = words.shuffled())
         }
     }
 
@@ -43,20 +47,24 @@ class SharedViewModel @Inject constructor(
         }
     }
 
-    fun saveWord(word: Word){
+    fun saveWord(word: Word) {
         wordRepository.addWord(word)
         getUnlearnedWords()
+        getLearnedWords()
         _uiState.update {
             it.copy(event = UiEvent.WordSaved)
         }
 
     }
 
-    fun removeWord(word: Word){
+    fun removeWord(word: Word) {
         wordRepository.removeWord(word)
         getLearnedWords()
-        _uiState.update {
-            it.copy(event = UiEvent.WordRemoved)
+        _uiState.update { it ->
+            val updatedUnlearnedWords = it.unlearnedWords.toMutableList().apply {
+                add(word)
+            }
+            it.copy(event = UiEvent.WordRemoved, unlearnedWords = updatedUnlearnedWords)
         }
     }
 
@@ -65,11 +73,15 @@ class SharedViewModel @Inject constructor(
             it.copy(event = null)
         }
     }
+
+    fun setUiStateForTesting(state: UiState) {
+        _uiState.value = state
+    }
 }
 
 data class UiState(
     val learnedWords: List<Word> = emptyList(),
-    val unlearnedWords: List<Word> = emptyList(),
+    val unlearnedWords: List<Word> = getAllWords().shuffled(),
     val event: UiEvent? = null
 )
 

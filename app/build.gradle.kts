@@ -50,8 +50,6 @@ dependencies {
     implementation (libs.androidx.fragment.ktx)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 
     //Navigation
     implementation(libs.androidx.navigation.fragment.ktx)
@@ -67,7 +65,18 @@ dependencies {
     //Swipe refresh layout
     implementation(libs.androidx.swiperefreshlayout)
 
-
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.mockito:mockito-core:4.8.1")
+    testImplementation("org.mockito:mockito-inline:4.8.1")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.1.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.0")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.0")
+    kaptAndroidTest("com.google.dagger:hilt-compiler:2.48")
+    testImplementation("io.mockk:mockk:1.13.4")
+    testImplementation ("io.mockk:mockk-android:1.13.4")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.0")
+    testImplementation("org.jetbrains.kotlin:kotlin-test:1.8.0")
 }
 
 kapt {
