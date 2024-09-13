@@ -4,13 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.tunahankaryagdi.wordmate.R
 import com.tunahankaryagdi.wordmate.presentation.SharedViewModel
 import com.tunahankaryagdi.wordmate.data.Word
 import com.tunahankaryagdi.wordmate.databinding.FragmentHomeBinding
+import com.tunahankaryagdi.wordmate.presentation.UiEvent
+import com.tunahankaryagdi.wordmate.presentation.components.CustomToast
 import com.tunahankaryagdi.wordmate.presentation.home.adapter.HomeWordsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -64,6 +68,14 @@ class HomeFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collect { state ->
                 homeWordsAdapter.setData(state.learnedWords)
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.uiState.collect { state ->
+                if (state.event == UiEvent.WordSaved){
+                    CustomToast(requireContext()).show(R.string.saved_successfully)
+                    viewModel.clearEvent()
+                }
             }
         }
     }

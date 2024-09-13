@@ -46,15 +46,34 @@ class SharedViewModel @Inject constructor(
     fun saveWord(word: Word){
         wordRepository.addWord(word)
         getUnlearnedWords()
+        _uiState.update {
+            it.copy(event = UiEvent.WordSaved)
+        }
+
     }
 
     fun removeWord(word: Word){
         wordRepository.removeWord(word)
         getLearnedWords()
+        _uiState.update {
+            it.copy(event = UiEvent.WordRemoved)
+        }
+    }
+
+    fun clearEvent() {
+        _uiState.update {
+            it.copy(event = null)
+        }
     }
 }
 
 data class UiState(
     val learnedWords: List<Word> = emptyList(),
-    val unlearnedWords: List<Word> = emptyList()
+    val unlearnedWords: List<Word> = emptyList(),
+    val event: UiEvent? = null
 )
+
+sealed class UiEvent {
+    object WordSaved : UiEvent()
+    object WordRemoved : UiEvent()
+}

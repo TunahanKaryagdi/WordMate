@@ -9,8 +9,8 @@ class HomeWordsViewHolder(private val binding: ItemWordListBinding) :
     fun bind(word: Word, onClickItem: (Word) -> Unit) {
 
         with(binding){
-            tvMain.text = word.turkish
-            tvSecondary.text = word.english
+            tvMain.text = word.english
+            tvSecondary.text = word.turkish
             root.setOnClickListener {
                 onClickItem(word)
             }

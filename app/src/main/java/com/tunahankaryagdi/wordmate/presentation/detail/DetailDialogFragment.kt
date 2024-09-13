@@ -40,8 +40,8 @@ class DetailDialogFragment() : DialogFragment() {
                 if (args.primary) viewModel.saveWord(args.word) else viewModel.removeWord(args.word)
                 dialog?.dismiss()
             }
-            tvTitle.text = args.word.turkish
-            tvDescription.text = args.word.english
+            tvTitle.text = args.word.english
+            tvDescription.text = args.word.turkish
             tvCancel.setOnClickListener {
                 dialog?.dismiss()
             }

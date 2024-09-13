@@ -13,4 +13,6 @@
     <string name="no_words_learned_yet">No words learned yet</string>
     <string name="would_you_like_to_add">Would you like to add it to the learned section?</string>
     <string name="do_you_want_unlearned">Do you want to mark as unlearned?</string>
+    <string name="saved_successfully">Saved successfully</string>
+    <string name="removed_successfully">Removed successfully</string>
 </resources>

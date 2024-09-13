@@ -10,8 +10,8 @@ class LearnedWordsViewHolder(val binding: ItemLearnedWordListBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(word: Word, onClickItem: (Word) -> Unit) {
         with(binding){
-            tvMain.text = word.turkish
-            tvSecondary.text = word.english
+            tvMain.text = word.english
+            tvSecondary.text = word.turkish
             ivArrow.setOnClickListener {
                 if (tvSecondary.visibility == View.GONE){
                     tvSecondary.visibility = View.VISIBLE
