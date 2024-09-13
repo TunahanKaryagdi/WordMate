@@ -1,16 +1,17 @@
-package com.tunahankaryagdi.wordmate.learned
+package com.tunahankaryagdi.wordmate.presentation.learned
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.tunahankaryagdi.wordmate.presentation.SharedViewModel
 import com.tunahankaryagdi.wordmate.data.Word
 import com.tunahankaryagdi.wordmate.databinding.FragmentLearnedBinding
-import com.tunahankaryagdi.wordmate.learned.adapter.LearnedWordsAdapter
+import com.tunahankaryagdi.wordmate.presentation.learned.adapter.LearnedWordsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class LearnedFragment : Fragment() {
 
-    private val viewModel by viewModels<LearnedViewModel>()
+    private val viewModel by activityViewModels<SharedViewModel>()
 
     private var _binding: FragmentLearnedBinding? = null
     private val binding get() = _binding!!

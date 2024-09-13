@@ -1,4 +1,4 @@
-package com.tunahankaryagdi.wordmate.home.adapter
+package com.tunahankaryagdi.wordmate.presentation.home.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.tunahankaryagdi.wordmate.data.Word

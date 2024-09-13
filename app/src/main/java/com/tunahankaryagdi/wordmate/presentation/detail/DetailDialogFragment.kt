@@ -1,21 +1,21 @@
-package com.tunahankaryagdi.wordmate.detail
+package com.tunahankaryagdi.wordmate.presentation.detail
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.tunahankaryagdi.wordmate.R
+import com.tunahankaryagdi.wordmate.presentation.SharedViewModel
 import com.tunahankaryagdi.wordmate.databinding.FragmentDetailDialogBinding
-import com.tunahankaryagdi.wordmate.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class DetailDialogFragment : DialogFragment() {
+class DetailDialogFragment() : DialogFragment() {
 
-    private val viewModel by viewModels<DetailViewModel>()
+    private val viewModel by activityViewModels<SharedViewModel>()
 
     private var _binding: FragmentDetailDialogBinding? = null
     private val binding get() = _binding!!

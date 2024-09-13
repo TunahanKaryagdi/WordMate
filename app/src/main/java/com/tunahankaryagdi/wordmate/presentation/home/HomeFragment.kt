@@ -1,23 +1,24 @@
-package com.tunahankaryagdi.wordmate.home
+package com.tunahankaryagdi.wordmate.presentation.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.tunahankaryagdi.wordmate.presentation.SharedViewModel
 import com.tunahankaryagdi.wordmate.data.Word
 import com.tunahankaryagdi.wordmate.databinding.FragmentHomeBinding
-import com.tunahankaryagdi.wordmate.home.adapter.HomeWordsAdapter
+import com.tunahankaryagdi.wordmate.presentation.home.adapter.HomeWordsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private val viewModel by viewModels<HomeViewModel>()
+    private val viewModel by activityViewModels<SharedViewModel>()
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -62,7 +63,7 @@ class HomeFragment : Fragment() {
     private fun observeUiState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.uiState.collect { state ->
-                homeWordsAdapter.setData(state.wordList)
+                homeWordsAdapter.setData(state.learnedWords)
             }
         }
     }

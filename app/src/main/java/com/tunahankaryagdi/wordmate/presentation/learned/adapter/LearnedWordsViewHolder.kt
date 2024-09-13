@@ -1,4 +1,4 @@
-package com.tunahankaryagdi.wordmate.learned.adapter
+package com.tunahankaryagdi.wordmate.presentation.learned.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

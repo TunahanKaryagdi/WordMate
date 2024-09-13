@@ -1,4 +1,4 @@
-package com.tunahankaryagdi.wordmate
+package com.tunahankaryagdi.wordmate.presentation
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.tunahankaryagdi.wordmate.R
 import com.tunahankaryagdi.wordmate.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
